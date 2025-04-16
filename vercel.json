@@ -1,5 +1,9 @@
 {
     
+    "builds": [
+    { "src": "random_word_api/wsgi.py", "use": "@vercel/python", "config": { "runtime": "python3.5" } }
+  ],
+
     "routes": [
         {
             "src": "/(.*)",
