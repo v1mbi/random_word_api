@@ -14,7 +14,7 @@ def get_index(request):
 def get_word(request):
     words = Words.objects.all()
     serialized = WordsSerializer(words, many=True)
-    if serialized.is_valid():
+    if serialized.data != []:
         return Response(random.choice(serialized.data))
     return Response([],status=status.HTTP_404_NOT_FOUND)
 
