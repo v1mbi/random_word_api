@@ -14,7 +14,9 @@ def get_index(request):
 def get_word(request):
     words = Words.objects.all()
     serialized = WordsSerializer(words, many=True)
-    return Response(random.choice(serialized.data))
+    if serialized.is_valid():
+        return Response(random.choice(serialized.data))
+    return Response([],status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['POST'])
 def post_word(request):
@@ -22,9 +24,9 @@ def post_word(request):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
-    return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+    return Response("Failed lol", status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['DELETE'])
+@api_view(['GET'])
 def delete_all(request):
     Words.objects.all().delete()
     return Response(status=status.HTTP_205_RESET_CONTENT)
@@ -33,7 +35,10 @@ def delete_all(request):
 def get_n_words(request,pk):
     words = Words.objects.all()
     serialized = WordsSerializer(words, many=True)
-    return Response(random.sample(serialized.data,pk))
+    if serialized.is_valid():
+        return Response(random.sample(serialized.data,pk))
+    return Response([],status=status.HTTP_404_NOT_FOUND)
+    
 
 @api_view(['GET'])
 def get_definition(request,pk):
