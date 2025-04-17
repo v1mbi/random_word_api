@@ -35,7 +35,7 @@ def delete_all(request):
 def get_n_words(request,pk):
     words = Words.objects.all()
     serialized = WordsSerializer(words, many=True)
-    if serialized.is_valid():
+    if serialized.data != []:
         return Response(random.sample(serialized.data,pk))
     return Response([],status=status.HTTP_404_NOT_FOUND)
     
