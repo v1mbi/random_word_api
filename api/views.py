@@ -28,8 +28,9 @@ def post_word(request):
 
 @api_view(['GET'])
 def delete_all(request):
-    Words.objects.all().delete()
-    return Response(status=status.HTTP_205_RESET_CONTENT)
+    #Words.objects.all().delete()
+    #return Response(status=status.HTTP_205_RESET_CONTENT)
+    return Response("disabled this for the public",status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def get_n_words(request,pk):
@@ -47,4 +48,6 @@ def get_definition(request,pk):
         return Response(serializer.data[0],status=status.HTTP_202_ACCEPTED)
     return Response("!!Failed!!",status=status.HTTP_404_NOT_FOUND)
     
-
+@api_view(['GET'])
+def invalid(request):
+    return Response("Invalid url",status=status.HTTP_404_NOT_FOUND)
