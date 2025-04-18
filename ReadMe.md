@@ -14,6 +14,7 @@
 3. random-word-api-d7bd.onrender.com/definition/s (s being a random word as a string)
    - https://random-word-api-d7bd.onrender.com/definition/honeycomb
   
-
+<br>
+<br>
 refer to this [Link](https://random-word-api-d7bd.onrender.com)
 
