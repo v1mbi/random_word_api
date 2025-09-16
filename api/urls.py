@@ -13,7 +13,8 @@ urlpatterns = [
     path('delete', delete_all),
     path('random/<int:pk>', get_n_words),
     path('random/<int:pk>/', get_n_words),
-    path('definition/<str:pk>',get_definition),path('',get_index,name=""),
+    path('definition/<str:pk>',get_definition),
+    path('',get_index,name=""),
     re_path(r'^.*$',invalid)
     
 ]
